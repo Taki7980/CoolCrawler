@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar/Navbar";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 const inter = Inter({ subsets: ["latin"] });
 const spaceGrotesk = Space_Grotesk({
@@ -10,7 +12,8 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
 	title: "Cool-Crawler",
-	description: "Track your product prices effortlessly and seamlessly with the help of our app",
+	description:
+		"Track your product prices effortlessly and seamlessly with the help of our app",
 };
 
 export default function RootLayout({
@@ -20,7 +23,14 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>{children}</body>
+			<body className={inter.className}>
+				<AuroraBackground>
+					<main className="max-w-10xl mx-auto">
+						<Navbar />
+						{children}
+					</main>
+				</AuroraBackground>
+			</body>
 		</html>
 	);
 }
