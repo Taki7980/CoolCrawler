@@ -30,12 +30,11 @@ export function HeroCarousel() {
 	return (
 		<Carousel
 			plugins={[plugin.current]}
-			className="w-full max-w-xs"
+			className="w-full max-w-xs hero-carousel"
 			onMouseEnter={plugin.current.stop}
 			onMouseLeave={plugin.current.reset}
-			
 		>
-			<CarouselContent >
+			<CarouselContent>
 				{heroImages.map((image, index) => (
 					<CarouselItem key={index} className="h-full w-full">
 						<div className="p-1 h-full w-full">
@@ -55,6 +54,13 @@ export function HeroCarousel() {
 					</CarouselItem>
 				))}
 			</CarouselContent>
+			<Image
+				src="/assets/icons/hand-drawn-arrow.svg"
+				alt="arrow"
+				width={175}
+				height={175}
+				className="absolute -left-[15%] bottom-0 max-xl:hidden"
+			/>
 		</Carousel>
 	);
 }
