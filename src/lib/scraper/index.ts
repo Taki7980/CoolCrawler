@@ -75,7 +75,7 @@ export async function scrapeAmazonProducts(url: string) {
 			url,
 			title: productName,
 			currentPrice: Number(currentPrice) || Number(originalPrice),
-			originalPrice: Number(currentPrice) || Number(originalPrice),
+			originalPrice: Number(originalPrice) || Number(currentPrice),
 			currency: currency || "$",
 			image: imageUrls[0],
 			priceHistory: [],
@@ -83,9 +83,12 @@ export async function scrapeAmazonProducts(url: string) {
 			discountRate: Number(discountRate),
 			customerReviews: cunstomerRevieved,
 			starRating: starRating,
-			description: description,
+			description,
+			lowestPrice:Number(currentPrice) || Number(originalPrice),
+			highestPrice:Number(originalPrice) || Number(currentPrice),
+			average:Number(currentPrice) || Number(originalPrice),
 		};
-		console.log(data);
+		return data;
 	} catch (error: any) {
 		throw new Error(`fail to scrape product : ${error.message}`);
 	}
